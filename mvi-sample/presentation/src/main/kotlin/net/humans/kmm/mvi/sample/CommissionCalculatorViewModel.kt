@@ -37,6 +37,7 @@ internal class CommissionCalculatorViewModel(
     fun inputAmountChange(input: String) {
         val amount = input.toFloatOrNull()?.let { it / INPUT_AMOUNT_DIVIDER } ?: DEFAULT_AMOUNT
         val moneyAmount = BigDecimal.fromFloat(amount).usd
+        engine send Message.ErrorHandled
         engine send Message.UpdateInput(moneyAmount)
     }
 
